@@ -3,7 +3,7 @@
 
 class MyCustomSensor : public PollingComponent, public Sensor {
  public:
-  Adafruit_EMC2101 emc
+  Adafruit_EMC2101 emc;
 
    // constructor
   MyCustomSensor() : PollingComponent(15000) {}
