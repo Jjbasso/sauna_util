@@ -1,12 +1,16 @@
 #include "esphome.h"
 #include "Adafruit_EMC2101.h"
 
-class MyCustomSensor : public PollingComponent, public Sensor {
+class emc2101_cust : public PollingComponent, public Sensor {
  public:
   Adafruit_EMC2101 emc;
+  Sensor *temperature_sensor = new Sensor();
+  Sensor *dutyCycle_sensor = new Sensor();
+  Sensor *rpm_sensor = new Sensor();
+  
 
    // constructor
-  MyCustomSensor() : PollingComponent(15000) {}
+  emc2101_cust() : PollingComponent(15000) {}
 
   float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
@@ -21,8 +25,13 @@ class MyCustomSensor : public PollingComponent, public Sensor {
     emc.LUTEnabled(false);
   }
   void update() override {
-    // This will be called every "update_interval" milliseconds.
-     int intTemp = emc.getInternalTemperature();
-     publish_state((intTemp*1.8)+32);
+     float temperature = emc.getInternalTemperature();
+     temperature_sensor->publish_state((temperature*1.8)+32);
+
+     float dutyCycle = emc.getDutyCycle();
+     dutyCycle_sensor->publish_state(dutyCycle);
+
+     float rpm = emc.getFanRPM();
+     rpm_sensor->publish_state(rpm);
   }
 };
