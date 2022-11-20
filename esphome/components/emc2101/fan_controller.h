@@ -23,6 +23,6 @@ class MyCustomSensor : public PollingComponent, public Sensor {
   void update() override {
     // This will be called every "update_interval" milliseconds.
      int intTemp = emc.getInternalTemperature();
-     publish_state(intTemp);
+     publish_state((intTemp*1.8)+32);
   }
 };
