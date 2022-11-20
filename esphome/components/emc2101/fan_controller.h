@@ -1,13 +1,21 @@
 #include "esphome.h"
 
-class MyCustomSensor : public Component, public Sensor {
+class MyCustomSensor : public PollingComponent, public Sensor {
  public:
+  
+   // constructor
+  MyCustomSensor() : PollingComponent(15000) {}
+
+  float get_setup_priority() const override { return esphome::setup_priority::XXXX; }
+
+
   void setup() override {
     // This will be called by App.setup()
     //
   }
-  void loop() override {
-    // This will be called by App.loop()
-    //  
+  void update() override {
+    // This will be called every "update_interval" milliseconds.
+    publish_state(42.0);
+    //
   }
 };
