@@ -22,9 +22,9 @@ void setup(void) {
    emc2101.setLUT(2, (110-32)*.5556, 90);
    emc2101.setLUT(3, (120-32)*.5556, 100);
    
-  emc2101.setFanMinRPM(1000);
-  emc2101.configFanSpinup(true);
-  emc2101.invertFanSpeed(false);
+    emc2101.setFanMinRPM(1000);
+    emc2101.configFanSpinup(true);
+    emc2101.invertFanSpeed(false);
   delay(5000);
   Serial.print("Fan RPM:: "); Serial.println(emc2101.getFanRPM());
   delay(20000);
