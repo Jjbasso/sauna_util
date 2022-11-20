@@ -6,7 +6,7 @@ class MyCustomSensor : public PollingComponent, public Sensor {
    // constructor
   MyCustomSensor() : PollingComponent(15000) {}
 
-  float get_setup_priority() const override { return esphome::setup_priority::XXXX; }
+  float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
 
   void setup() override {
