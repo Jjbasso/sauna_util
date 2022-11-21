@@ -37,3 +37,23 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   }
   
 };
+
+class emc2101_fan_switch : public Component, public Switch {
+ public:
+  Adafruit_EMC2101 emc;
+  
+  void setup() override {}
+
+  void write_state(bool state) override {
+    // This will be called every time the user requests a state change.
+  if (state = true) {
+      emc.setDutyCycle(0);
+    }
+  else {
+    emc.setDutyCycle(100);
+  }
+ 
+    // Acknowledge new state by publishing it
+    publish_state(state);
+  }
+};
