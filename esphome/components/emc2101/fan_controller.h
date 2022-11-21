@@ -1,9 +1,10 @@
 #include "esphome.h"
 #include "Adafruit_EMC2101.h"
+Adafruit_EMC2101 emc;
 
 class emc2101_sensors : public PollingComponent, public Sensor {
  public:
-  Adafruit_EMC2101 emc;
+
   Sensor *temperature_sensor = new Sensor();
   Sensor *dutyCycle_sensor = new Sensor();
   Sensor *rpm_sensor = new Sensor();
@@ -42,13 +43,10 @@ class emc2101_sensors : public PollingComponent, public Sensor {
 
 class emc2101_fan_switch : public Component, public Switch {
  public:
-  Adafruit_EMC2101 emc;
   
-  void setup() override {}
-
   void write_state(bool state) override {
-    emc.setDutyCycle(100);
-    this->state = state;
+
+    //this->state = state;
     // This will be called every time the user requests a state change.
  
    if (state) {
