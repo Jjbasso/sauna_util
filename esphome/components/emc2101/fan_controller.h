@@ -47,14 +47,14 @@ class emc2101_fan_switch : public Component, public Switch {
   void setup() override {}
 
   void write_state(bool state) override {
+    this->state = state;
     // This will be called every time the user requests a state change.
-  if (state == true) {
+  if (state) {
       emc.setDutyCycle(100);
     }
   else {
       emc.setDutyCycle(100);
   }
- emc.setDutyCycle(100);
     // Acknowledge new state by publishing it
     publish_state(state);
   }
