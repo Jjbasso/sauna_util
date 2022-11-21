@@ -58,6 +58,7 @@ class emc2101_fan_switch : public Component, public Switch {
     // Acknowledge new state by publishing it
     publish_state(state);
   }
+};
  
  class emc2101_fan_speed : public Component, public FloatOutput {
   public:
@@ -72,5 +73,4 @@ class emc2101_fan_switch : public Component, public Switch {
      // Acknowledge new state by publishing it
     publish_state(state); 
   }
-        }
-};
+ };
