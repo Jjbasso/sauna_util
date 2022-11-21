@@ -1,26 +1,7 @@
 #include "esphome.h"
 #include "Adafruit_EMC2101.h"
 
-class emc2101_init {
-  
-  Adafruit_EMC2101 emc;
-  
-  float get_setup_priority() const override { return esphome::setup_priority::BUS; }
-
-  void setup() override {
-    // This will be called by App.setup()
-    
-    emc.begin();
-    emc.setFanMinRPM(1000);
-    emc.configFanSpinup(true);
-    emc.invertFanSpeed(false);
-    emc.LUTEnabled(false);
-  }
-}
-
-
-
-class emc2101_sensors : public PollingComponent, public Sensor {
+class emc2101_cust : public PollingComponent, public Sensor {
  public:
   Adafruit_EMC2101 emc;
   Sensor *temperature_sensor = new Sensor();
@@ -32,9 +13,18 @@ class emc2101_sensors : public PollingComponent, public Sensor {
    // constructor
   emc2101_cust() : PollingComponent(15000) {}
 
-  void setup() override {
-  }
+  float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
+
+  void setup() override {
+    // This will be called by App.setup()
+    
+    emc.begin();
+    emc.setFanMinRPM(1000);
+    emc.configFanSpinup(true);
+    emc.invertFanSpeed(false);
+    emc.LUTEnabled(false);
+  }
   void update() override {
      float temperature = emc.getInternalTemperature();
      temperature_sensor->publish_state((temperature*1.8)+32);
