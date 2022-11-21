@@ -69,8 +69,5 @@ class emc2101_fan_switch : public Component, public Switch {
      // we need to convert it to an integer first
      int value = state * 100;
      emc.setDutyCycle(value);
-     
-     // Acknowledge new state by publishing it
-    publish_state(state); 
-  }
+    }
  };
