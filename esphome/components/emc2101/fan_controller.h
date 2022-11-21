@@ -58,4 +58,19 @@ class emc2101_fan_switch : public Component, public Switch {
     // Acknowledge new state by publishing it
     publish_state(state);
   }
+ 
+ class emc2101_fan_speed : public Component, public FloatOutput {
+  public:
+   
+    void write_state(float state) override {
+      
+     // state is the amount this output should be on, from 0.0 to 1.0
+     // we need to convert it to an integer first
+     int value = state * 100;
+     emc.setDutyCycle(value);
+     
+     // Acknowledge new state by publishing it
+    publish_state(state); 
+  }
+        }
 };
