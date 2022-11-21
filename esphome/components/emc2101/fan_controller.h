@@ -11,7 +11,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   
 
    // constructor
-  emc2101_cust() : PollingComponent(15000) {}
+  emc2101_sensors() : PollingComponent(15000) {}
 
   float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
