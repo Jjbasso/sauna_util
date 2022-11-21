@@ -51,7 +51,7 @@ class emc2101_fan_switch : public Component, public Switch {
       emc.setDutyCycle(100);
     }
   else {
-    emc.setDutyCycle(0);
+      emc.setDutyCycle(0);
   }
  
     // Acknowledge new state by publishing it
