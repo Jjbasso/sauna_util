@@ -24,6 +24,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc.configFanSpinup(true);
     emc.invertFanSpeed(false);
     emc.LUTEnabled(false);
+    emc.setDutyCycle(0);
   }
   void update() override {
      float temperature = emc.getInternalTemperature();
