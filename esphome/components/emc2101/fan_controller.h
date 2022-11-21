@@ -1,12 +1,13 @@
 #include "esphome.h"
 #include "Adafruit_EMC2101.h"
 
-class emc2101_cust : public PollingComponent, public Sensor {
+class emc2101_sensors : public PollingComponent, public Sensor {
  public:
   Adafruit_EMC2101 emc;
   Sensor *temperature_sensor = new Sensor();
   Sensor *dutyCycle_sensor = new Sensor();
   Sensor *rpm_sensor = new Sensor();
+
   
 
    // constructor
@@ -34,4 +35,5 @@ class emc2101_cust : public PollingComponent, public Sensor {
      float rpm = emc.getFanRPM();
      rpm_sensor->publish_state(rpm);
   }
+  
 };
