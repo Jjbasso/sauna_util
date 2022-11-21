@@ -25,10 +25,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc.invertFanSpeed(false);
     emc.LUTEnabled(false);
     emc.setDutyCycle(0);
-    delay(5000);
-   emc.setDutyCycle(100);
-   delay(5000);
-   emc.setDutyCycle(0);
+   
   }
   void update() override {
      float temperature = emc.getInternalTemperature();
