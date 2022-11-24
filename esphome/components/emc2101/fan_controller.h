@@ -54,6 +54,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      // based on onboard teamp sensor and lookup table
      if (state == 0.0) {
       emc.LUTEnabled(true);
+      emc.setForcedTemperature((95-32)*.5556);
     }
   else {
       emc.LUTEnabled(false);
