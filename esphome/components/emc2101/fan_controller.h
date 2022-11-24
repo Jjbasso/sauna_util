@@ -15,18 +15,6 @@ class emc2101_sensors : public PollingComponent, public Sensor {
 
 
   void setup() override {
-    // This will be called by App.setup()
-   // LUT for auto fan mode
-   emc.setLUT(0, (90-32)*.5556, 12);
-   emc.setLUT(1, (95-32)*.5556, 13);
-   emc.setLUT(2, (100-32)*.5556, 14);
-   emc.setLUT(3, (105-32)*.5556, 15);
-   emc.setLUT(4, (110-32)*.5556, 16);
-   emc.setLUT(5, (115-32)*.5556, 17);
-   emc.setLUT(6, (120-32)*.5556, 18);
-   emc.setLUT(7, (125-32)*.5556, 19);
-    
-   
    
    
    emc.begin();
@@ -62,6 +50,19 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      }
      else {
         emc.LUTEnabled(true);
+       // This will be called by App.setup()
+       // LUT for auto fan mode
+       emc.setLUT(0, (90-32)*.5556, 12);
+       emc.setLUT(1, (95-32)*.5556, 13);
+       emc.setLUT(2, (100-32)*.5556, 14);
+       emc.setLUT(3, (105-32)*.5556, 15);
+       emc.setLUT(4, (110-32)*.5556, 16);
+       emc.setLUT(5, (115-32)*.5556, 17);
+       emc.setLUT(6, (120-32)*.5556, 18);
+       emc.setLUT(7, (125-32)*.5556, 19);
+    
+   
+   
         emc.setForcedTemperature((108-32)*.5556);
      }
     }
