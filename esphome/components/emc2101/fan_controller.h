@@ -50,7 +50,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      }
      else {
         emc.setDutyCycle(0);
-        emc.LUTEnabled(true);
+        
        // This will be called by App.setup()
        // LUT for auto fan mode
        emc.setLUT(0, (90-32)*.5556, 12);
@@ -61,6 +61,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        emc.setLUT(5, (115-32)*.5556, 17);
        emc.setLUT(6, (120-32)*.5556, 18);
        emc.setLUT(7, (125-32)*.5556, 19);
+       emc.LUTEnabled(true);
        // use for testing loookup table   
        // emc.setForcedTemperature((108-32)*.5556);
      }
