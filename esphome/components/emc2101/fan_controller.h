@@ -6,12 +6,9 @@ class emc2101_sensors : public PollingComponent, public Sensor {
  public:
 
   Sensor *temperature_sensor = new Sensor();
-  Sensor *dutyCycle_sensor = new Sensor();
   Sensor *rpm_sensor = new Sensor();
 
-  
-
-   // constructor
+  // constructor
   emc2101_sensors() : PollingComponent(5000) {}
 
   float get_setup_priority() const override { return esphome::setup_priority::BUS; }
@@ -19,16 +16,11 @@ class emc2101_sensors : public PollingComponent, public Sensor {
 
   void setup() override {
     // This will be called by App.setup()
-    
     emc.begin();
-    emc.LUTEnabled(false);
-    emc.setFanMinRPM(350);  // Spec sheet Min Speed
-    emc.configFanSpinup(true);  // Run fan at 100% duty  until it hits min rpm setting
-
     emc.enableTachInput(true);
     emc.configPWMClock(false,true);
     emc.setPWMDivisor(0);
-    emc.setPWMFrequency(7);
+    emc.setPWMFrequency(7);  # sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
    
   }
   void update() override {
