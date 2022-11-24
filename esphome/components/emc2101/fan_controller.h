@@ -33,27 +33,8 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   
 };
 
-class emc2101_fan_switch : public Component, public Switch {
+class emc2101_fan_speed : public Component, public FloatOutput {
  public:
-  
-  void write_state(bool state) override {
-
-    //this->state = state;
-    // This will be called every time the user requests a state change.
- 
-   if (state) {
-      emc.setDutyCycle(19);
-    }
-  else {
-      emc.setDutyCycle(0);
-  }
-    // Acknowledge new state by publishing it
-    publish_state(state);
-  }
-};
- 
- class emc2101_fan_speed : public Component, public FloatOutput {
-  public:
    
     void write_state(float state) override {
      // if we are not manually setting fan speed then put fan in auto enable mode
