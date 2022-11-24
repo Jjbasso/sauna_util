@@ -46,6 +46,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      // based on onboard teamp sensor and lookup table
      if (value > 0) {
         emc.LUTEnabled(false);
+        emc2101.enableForcedTemperature(false);
         emc.setDutyCycle(value);
      }
      else {
@@ -62,7 +63,8 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        emc.setLUT(6, (120-32)*.5556, 18);
        emc.setLUT(7, (125-32)*.5556, 19);
        emc.LUTEnabled(true);
-       // use for testing loookup table   
+       // use for testing loookup table  
+       // emc2101.enableForcedTemperature(true);
        // emc.setForcedTemperature((108-32)*.5556);
      }
     }
