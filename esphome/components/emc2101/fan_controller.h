@@ -12,7 +12,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   
 
    // constructor
-  emc2101_sensors() : PollingComponent(5000) {}
+  emc2101_sensors() : PollingComponent(1500) {}
 
   float get_setup_priority() const override { return esphome::setup_priority::BUS; }
 
@@ -21,11 +21,14 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     // This will be called by App.setup()
     
     emc.begin();
-    emc.setFanMinRPM(1000);
-    emc.configFanSpinup(true);
-    emc.invertFanSpeed(false);
     emc.LUTEnabled(false);
-    emc.setDutyCycle(0);
+    emc.setFanMinRPM(350);  // Spec sheet Min Speed
+    emc.configFanSpinup(true);  // Run fan at 100% duty  until it hits min rpm setting
+
+    emc.enableTachInput(true);
+    emc.configPWMClock(false,true);
+    emc.setPWMDivisor(0);
+    emc.setPWMFrequency(7);
    
   }
   void update() override {
@@ -50,7 +53,7 @@ class emc2101_fan_switch : public Component, public Switch {
     // This will be called every time the user requests a state change.
  
    if (state) {
-      emc.setDutyCycle(100);
+      emc.setDutyCycle(19);
     }
   else {
       emc.setDutyCycle(0);
@@ -67,7 +70,7 @@ class emc2101_fan_switch : public Component, public Switch {
       
      // state is the amount this output should be on, from 0.0 to 1.0
      // we need to convert it to an integer first
-     int value = state * 100;
+     int value = state * 19;
      emc.setDutyCycle(value);
     }
  };
