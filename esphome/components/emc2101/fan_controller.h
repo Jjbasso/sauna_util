@@ -49,6 +49,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
         emc.setDutyCycle(value);
      }
      else {
+        emc.setDutyCycle(0);
         emc.LUTEnabled(true);
        // This will be called by App.setup()
        // LUT for auto fan mode
