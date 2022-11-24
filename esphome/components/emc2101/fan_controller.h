@@ -20,7 +20,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc.enableTachInput(true);
     emc.configPWMClock(false,true);
     emc.setPWMDivisor(0);
-    emc.setPWMFrequency(7);  # sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
+    emc.setPWMFrequency(7); // sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
    
   }
   void update() override {
