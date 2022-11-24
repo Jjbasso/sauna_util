@@ -39,7 +39,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
     void write_state(float state) override {
      // if we are not manually setting fan speed then put fan in auto enable mode
      // based on onboard teamp sensor and lookup table
-     if (value == 0.0) {
+     if (state == 0.0) {
       emc.LUTEnabled(true);
     }
   else {
