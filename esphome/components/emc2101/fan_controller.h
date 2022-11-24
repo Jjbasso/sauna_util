@@ -35,9 +35,6 @@ class emc2101_sensors : public PollingComponent, public Sensor {
      float temperature = emc.getInternalTemperature();
      temperature_sensor->publish_state((temperature*1.8)+32);
 
-     float dutyCycle = emc.getDutyCycle();
-     dutyCycle_sensor->publish_state(dutyCycle);
-
      float rpm = emc.getFanRPM();
      rpm_sensor->publish_state(rpm);
   }
