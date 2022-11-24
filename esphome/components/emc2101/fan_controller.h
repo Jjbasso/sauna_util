@@ -50,19 +50,19 @@ class emc2101_fan_speed : public Component, public FloatOutput {
  public:
    
     void write_state(float state) override {
+       // state is the amount this output should be on, from 0.0 to 1.0
+       // We multiple by 19 and not 100 due to calc error or resolution problem
+     int value = state * 19;
+     
      // if we are not manually setting fan speed then put fan in auto enable mode
      // based on onboard teamp sensor and lookup table
-     if (state == 0.0) {
-      emc.LUTEnabled(true);
-      emc.setForcedTemperature((108-32)*.5556);
-    }
-  else {
-      emc.LUTEnabled(false);
-  }
-      
-     // state is the amount this output should be on, from 0.0 to 1.0
-     // We multiple by 19 and not 100 due to calc error or resolution problem
-     int value = state * 19;
-     emc.setDutyCycle(value);
+     if (value > 0) {
+        emc.LUTEnabled(false);
+        emc.setDutyCycle(value);
+     }
+     else {
+        emc.LUTEnabled(true);
+        emc.setForcedTemperature((108-32)*.5556);
+     }
     }
  };
