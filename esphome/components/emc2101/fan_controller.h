@@ -41,7 +41,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        // state is the amount this output should be on, from 0.0 to 1.0
        // We multiple by 19 and not 100 due to calc error or resolution problem
      int value = state * 19;
-     ESP_LOGD("custom", "Setting Dutycyle to: %f", state.state);
+     ESP_LOGD("custom", "Setting Dutycyle to: %f", value);
      
      
      // if we are not manually setting fan speed then put fan in auto enable mode
