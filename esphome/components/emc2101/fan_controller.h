@@ -25,11 +25,14 @@ class emc2101_sensors : public PollingComponent, public Sensor {
    
   }
   void update() override {
-     float temperature = emc.getInternalTemperature();
-     temperature_sensor->publish_state((temperature*1.8)+32);
+   float internal_temperature = emc.getInternalTemperature();
+   internal_temperature_sensor->publish_state((internal_temperature*1.8)+32);
 
-     float rpm = emc.getFanRPM();
-     rpm_sensor->publish_state(rpm);
+   float external_temperature = emc.getExternalTemperature();
+   external_temperature_sensor->publish_state((external_temperature*1.8)+32);
+   
+   float rpm = emc.getFanRPM();
+   rpm_sensor->publish_state(rpm);
   }
   
 };
@@ -55,7 +58,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      else {
        // This will be called by App.setup()
        // LUT for auto fan mode
-       ESP_LOGD("custom", "Setup LUT and enable");
+       ESP_LOGD("custom", "Setup LUT and enable Auto Mode");
        emc.setLUT(0, (32-32)*.5556, 0);
        emc.setLUT(1, (95-32)*.5556, 13);
        emc.setLUT(2, (100-32)*.5556, 14);
@@ -67,7 +70,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        emc.LUTEnabled(true);
        // use for testing loookup table  
        emc.enableForcedTemperature(true);
-       emc.setForcedTemperature((60-32)*.5556);
+       emc.setForcedTemperature((102-32)*.5556);
      }
     }
  };
