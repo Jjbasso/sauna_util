@@ -18,7 +18,7 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   void setup() override {
    
    
-   emc.begin();
+    emc.begin();
     emc.enableTachInput(true);
     emc.configPWMClock(false,true);
     emc.setPWMDivisor(0);
@@ -32,19 +32,18 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc.setLUT(5, (115-32)*.5556, 17);
     emc.setLUT(6, (120-32)*.5556, 18);
     emc.setLUT(7, (125-32)*.5556, 19);
-   
-   
-   
   }
-  void update() override {
-   float internal_temperature = emc.getInternalTemperature();
-   internal_temperature_sensor->publish_state((internal_temperature*1.8)+32);
 
-   float external_temperature = emc.getExternalTemperature();
-   external_temperature_sensor->publish_state((external_temperature*1.8)+32);
+ 
+  void update() override {
+    float internal_temperature = emc.getInternalTemperature();
+    internal_temperature_sensor->publish_state((internal_temperature*1.8)+32);
+
+    float external_temperature = emc.getExternalTemperature();
+    external_temperature_sensor->publish_state((external_temperature*1.8)+32);
    
-   float rpm = emc.getFanRPM();
-   rpm_sensor->publish_state(rpm);
+    float rpm = emc.getFanRPM();
+    rpm_sensor->publish_state(rpm);
   }
   
 };
