@@ -43,16 +43,17 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      int value = state * 19;
      
      // if we are not manually setting fan speed then put fan in auto enable mode
-     // based on onboard teamp sensor and lookup table
+     // based on onboard temp sensor and lookup table
      if (value > 0) {
+        ESP_LOGD("custom", "Setting fan to something above 0");
         emc.LUTEnabled(false);
         emc.enableForcedTemperature(false);
         emc.setDutyCycle(value);
      }
      else {
-        
        // This will be called by App.setup()
        // LUT for auto fan mode
+       ESP_LOGD("custom", "Setup LUT and enable");
        emc.setLUT(0, (32-32)*.5556, 0);
        emc.setLUT(1, (95-32)*.5556, 13);
        emc.setLUT(2, (100-32)*.5556, 14);
