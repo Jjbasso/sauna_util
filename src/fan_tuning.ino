@@ -17,7 +17,7 @@ void setup(void) {
   }
   Serial.println("EMC2101 Found!");
 
-   emc2101.setLUT(0, (32-32)*.5556, 12);
+   emc2101.setLUT(0, (32-32)*.5556, 0);
    emc2101.setLUT(1, (95-32)*.5556, 13);
    emc2101.setLUT(2, (100-32)*.5556, 14);
    emc2101.setLUT(3, (105-32)*.5556, 15);
@@ -29,7 +29,7 @@ void setup(void) {
    
     emc2101.LUTEnabled(false);
     emc2101.setFanMinRPM(350);  // Spec sheet Min Speed
-    emc2101.configFanSpinup(true);  // Run fan at 100% duty  until it hits min rpm setting
+    emc2101.configFanSpinup(true);  // Run fan at 100% duty until it hits min rpm setting
 
     emc2101.enableTachInput(true);
     emc2101.configPWMClock(false,true);
