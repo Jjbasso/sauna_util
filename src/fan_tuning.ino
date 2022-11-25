@@ -28,16 +28,12 @@ void setup(void) {
    
    
     emc2101.LUTEnabled(false);
-    emc2101.setFanMinRPM(350);  // Spec sheet Min Speed
-    emc2101.configFanSpinup(true);  // Run fan at 100% duty until it hits min rpm setting
-
     emc2101.enableTachInput(true);
     emc2101.configPWMClock(false,true);
     emc2101.setPWMDivisor(0);
     emc2101.setPWMFrequency(7);
-   
-   
-  Serial.print("Internal Temperature: ");
+  
+  Serial.print("Controller Temperature: ");
   Serial.print((emc2101.getInternalTemperature()*1.8)+32);Serial.println(" degrees F");
 
   int i;
