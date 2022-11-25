@@ -24,6 +24,17 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc.setPWMDivisor(0);
     emc.setPWMFrequency(7); // sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
    
+    emc.setLUT(0, (32-32)*.5556, 0);
+    emc.setLUT(1, (95-32)*.5556, 13);
+    emc.setLUT(2, (100-32)*.5556, 14);
+    emc.setLUT(3, (105-32)*.5556, 15);
+    emc.setLUT(4, (110-32)*.5556, 16);
+    emc.setLUT(5, (115-32)*.5556, 17);
+    emc.setLUT(6, (120-32)*.5556, 18);
+    emc.setLUT(7, (125-32)*.5556, 19);
+   
+   
+   
   }
   void update() override {
    float internal_temperature = emc.getInternalTemperature();
@@ -60,14 +71,6 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        // This will be called by App.setup()
        // LUT for auto fan mode
        ESP_LOGD("custom", "Setup LUT and enable Auto Mode");
-       emc.setLUT(0, (32-32)*.5556, 0);
-       emc.setLUT(1, (95-32)*.5556, 13);
-       emc.setLUT(2, (100-32)*.5556, 14);
-       emc.setLUT(3, (105-32)*.5556, 15);
-       emc.setLUT(4, (110-32)*.5556, 16);
-       emc.setLUT(5, (115-32)*.5556, 17);
-       emc.setLUT(6, (120-32)*.5556, 18);
-       emc.setLUT(7, (125-32)*.5556, 19);
        emc.LUTEnabled(true);
        // use for testing loookup table  
        //emc.enableForcedTemperature(true);
