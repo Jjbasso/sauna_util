@@ -70,8 +70,8 @@ class emc2101_fan_speed : public Component, public FloatOutput {
        emc.setLUT(7, (125-32)*.5556, 19);
        emc.LUTEnabled(true);
        // use for testing loookup table  
-       emc.enableForcedTemperature(true);
-       emc.setForcedTemperature((102-32)*.5556);
+       //emc.enableForcedTemperature(true);
+       //emc.setForcedTemperature((102-32)*.5556);
      }
     }
  };
