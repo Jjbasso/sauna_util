@@ -36,13 +36,13 @@ class emc2101_sensors : public PollingComponent, public Sensor {
 
  
   void update() override {
-    float internal_temperature = emc.getInternalTemperature();
+    float internal_temperature = emc2101.getInternalTemperature();
     internal_temperature_sensor->publish_state((internal_temperature*1.8)+32);
 
-    float external_temperature = emc.getExternalTemperature();
+    float external_temperature = emc2101.getExternalTemperature();
     external_temperature_sensor->publish_state((external_temperature*1.8)+32);
    
-    float rpm = emc.getFanRPM();
+    float rpm = emc2101.getFanRPM();
     rpm_sensor->publish_state(rpm);
   }
   
