@@ -1,6 +1,6 @@
 #include "esphome.h"
 #include "Adafruit_EMC2101.h"
-Adafruit_EMC2101 emc;
+Adafruit_EMC2101 emc2101;
 
 class emc2101_sensors : public PollingComponent, public Sensor {
  public:
@@ -18,20 +18,20 @@ class emc2101_sensors : public PollingComponent, public Sensor {
   void setup() override {
    
    
-    emc.begin();
-    emc.enableTachInput(true);
-    emc.configPWMClock(false,true);
-    emc.setPWMDivisor(0);
-    emc.setPWMFrequency(7); // sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
+    emc2101.begin();
+    emc2101.enableTachInput(true);
+    emc2101.configPWMClock(false,true);
+    emc2101.setPWMDivisor(0);
+    emc2101.setPWMFrequency(7); // sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
    
-    emc.setLUT(0, (32-32)*.5556, 0);
-    emc.setLUT(1, (95-32)*.5556, 13);
-    emc.setLUT(2, (100-32)*.5556, 14);
-    emc.setLUT(3, (105-32)*.5556, 15);
-    emc.setLUT(4, (110-32)*.5556, 16);
-    emc.setLUT(5, (115-32)*.5556, 17);
-    emc.setLUT(6, (120-32)*.5556, 18);
-    emc.setLUT(7, (125-32)*.5556, 19);
+    emc2101.setLUT(0, (32-32)*.5556, 0);
+    emc2101.setLUT(1, (95-32)*.5556, 13);
+    emc2101.setLUT(2, (100-32)*.5556, 14);
+    emc2101.setLUT(3, (105-32)*.5556, 15);
+    emc2101.setLUT(4, (110-32)*.5556, 16);
+    emc2101.setLUT(5, (115-32)*.5556, 17);
+    emc2101.setLUT(6, (120-32)*.5556, 18);
+    emc2101.setLUT(7, (125-32)*.5556, 19);
   }
 
  
@@ -58,22 +58,21 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      ESP_LOGD("custom", "Setting Dutycyle to: %i", value);
      
      
-     // if we are not manually setting fan speed then put fan in auto enable mode
-     // based on onboard temp sensor and lookup table
+     // if we are not manually setting fan speed then put fan in auto mode
+     // based on onboard temp sensor and lookup table given above
      if (value > 0) {
         ESP_LOGD("custom", "Enable Manaul Over Ride of Fan control");
-        emc.LUTEnabled(false);
-        emc.enableForcedTemperature(false);
-        emc.setDutyCycle(value);
+        emc2101.LUTEnabled(false);
+        emc2101.enableForcedTemperature(false);
+        emc2101.setDutyCycle(value);
      }
      else {
-       // This will be called by App.setup()
        // LUT for auto fan mode
        ESP_LOGD("custom", "Setup LUT and enable Auto Mode");
-       emc.LUTEnabled(true);
+       emc2101.LUTEnabled(true);
        // use for testing loookup table  
-       //emc.enableForcedTemperature(true);
-       //emc.setForcedTemperature((102-32)*.5556);
+       //emc2101.enableForcedTemperature(true);
+       //emc2101.setForcedTemperature((102-32)*.5556);
      }
     }
  };
