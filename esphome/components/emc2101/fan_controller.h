@@ -5,7 +5,8 @@ Adafruit_EMC2101 emc;
 class emc2101_sensors : public PollingComponent, public Sensor {
  public:
 
-  Sensor *temperature_sensor = new Sensor();
+  Sensor *external_temperature_sensor = new Sensor();
+  Sensor *internal_temperature_sensor = new Sensor();
   Sensor *rpm_sensor = new Sensor();
 
   // constructor
