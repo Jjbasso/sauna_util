@@ -45,7 +45,7 @@ class emc2101_fan_speed : public Component, public FloatOutput {
      // if we are not manually setting fan speed then put fan in auto enable mode
      // based on onboard temp sensor and lookup table
      if (value > 0) {
-        ESP_LOGD("custom", "Setting fan to something above 0");
+        ESP_LOGD("custom", "Enable Manaul Over Ride of Fan control");
         emc.LUTEnabled(false);
         emc.enableForcedTemperature(false);
         emc.setDutyCycle(value);
