@@ -1,0 +1,63 @@
+apds9960:
+  address: 0x39
+  update_interval: 1s
+  proximity_gain: 8x
+  ambient_light_gain: 4x
+  gesture_gain: 8x
+  gesture_led_drive: 12.5mA
+  gesture_wait_time: 2.8ms
+
+sensor:
+  # gesture sensor input
+  - platform: apds9960
+    name: "Sauna Element Proximity Channel"
+    id: prox
+    type: PROXIMITY
+
+text_sensor: 
+  - platform : template 
+    name: "Sauna Element Gesture Status"
+    icon: mdi:gesture
+    id : direction_status
+
+binary_sensor:
+# gesture sensor binary inputs
+  - platform: apds9960
+    id: gusture_up
+    direction: UP
+    on_state:
+      - lambda: id(scn_off_delay) = 0.0;
+      - lambda: id(oled_display).turn_on(); 
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "UP"
+
+  - platform: apds9960
+    id: gusture_down
+    direction: DOWN
+    on_state:
+      - lambda: id(scn_off_delay) = 0.0;
+      - lambda: id(oled_display).turn_on(); 
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "DOWN"
+    
+  - platform: apds9960
+    id: gusture_right
+    direction: RIGHT
+    on_state:
+      - lambda: id(scn_off_delay) = 0.0;
+      - lambda: id(oled_display).turn_on(); 
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "RIGHT"
+    
+  - platform: apds9960
+    id: gusture_left
+    direction: LEFT
+    on_state:
+      - lambda: id(scn_off_delay) = 0.0;
+      - lambda: id(oled_display).turn_on(); 
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "LEFT"
