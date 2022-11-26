@@ -4,3 +4,13 @@ esphome:
     - SPI
     - "Adafruit BusIO"
     - "Adafruit EMC2101"
+
+
+i2c:
+  sda: 21
+  scl: 22
+  scan: true
+  id: bus_a
+
+# Enable logging
+logger:      
