@@ -25,18 +25,18 @@ sensor:
       - below: 2.0
         then:
           - binary_sensor.template.publish: 
-              id: proximity
+              id: $gesture_prox_obj
               state: OFF
       - above: 2.0
         below: 50.0
         then:
           - binary_sensor.template.publish: 
-              id: proximity
+              id: $gesture_prox_obj
               state: ON
       - above: 50.0
         then:
           - binary_sensor.template.publish: 
-              id: proximity
+              id: $gesture_prox_obj
               state: OFF
 
 binary_sensor:
