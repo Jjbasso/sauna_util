@@ -1,5 +1,6 @@
-libraries:
-  - Wire
-  - SPI
-  - "Adafruit BusIO"
-  - "Adafruit EMC2101"
+esphome:
+  libraries:
+    - Wire
+    - SPI
+    - "Adafruit BusIO"
+    - "Adafruit EMC2101"
