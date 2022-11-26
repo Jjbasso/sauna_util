@@ -15,20 +15,6 @@ text_sensor:
     icon: mdi:gesture
     id : direction_status
 
-number:
-  - platform: template
-    id: no_prox_dur
-    optimistic: true
-    min_value: 0
-    max_value: 100
-    step: 1
-    on_value_range:
-      above: 3
-      then:
-        - binary_sensor.template.publish: 
-          id: proximity
-          state: OFF
-
 
 sensor:
   - platform: apds9960
@@ -39,19 +25,17 @@ sensor:
       - above: 2.0
         below: 50.0
         then:
-        - number.increment:
-          id: no_prox_dur
-          cycle: true
+          - binary_sensor.template.publish: 
+            id: proximity
+            state: ON
 
 binary_sensor:
   - platform: template
     name: "Sauna Utility Gesture Proximity"
     id: proximity
-    on_value:
-      then:
-        - number.set:
-          id: no_prox_dur
-          value: 0
+    filters:
+      - autorepeat:
+          time_on: 9s
 
   - platform: apds9960
     id: gesture_up
