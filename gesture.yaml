@@ -18,7 +18,7 @@ text_sensor:
 
 sensor:
   - platform: apds9960
-    name: "Sauna Element Proximity Channel"
+    name: "Sauna Utility Proximity Channel"
     id: prox
     type: PROXIMITY    
     on_value_range:
@@ -28,14 +28,17 @@ sensor:
           - binary_sensor.template.publish: 
               id: proximity
               state: ON
-
+        else:      
+          - binary_sensor.template.publish: 
+              id: proximity
+              state: OFF
 binary_sensor:
   - platform: template
     name: "Sauna Utility Gesture Proximity"
     id: proximity
     filters:
-      - autorepeat:
-          time_on: 9s
+      - delayed_off:
+          time: 9s
 
   - platform: apds9960
     id: gesture_up
