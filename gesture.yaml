@@ -37,8 +37,7 @@ binary_sensor:
     name: "Sauna Utility Gesture Proximity"
     id: proximity
     filters:
-      - delayed_off:
-          time: 9s
+      - delayed_off: 9s
 
   - platform: apds9960
     id: gesture_up
