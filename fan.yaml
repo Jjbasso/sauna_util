@@ -4,16 +4,8 @@ esphome:
     - SPI
     - "Adafruit BusIO"
     - "Adafruit EMC2101"
-
-
-i2c:
-  sda: 21
-  scl: 22
-  scan: true
-  id: bus_a
-
-# Enable logging
-logger:
+  includes:
+    - .esphome/external_components/9484f30d/esphome/components/emc2101/fan_controller.h
 
 sensor:
    # Setup fan sensors
