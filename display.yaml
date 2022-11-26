@@ -32,11 +32,6 @@ mcp23008:
   - id: 'mcp23008_hub'
     address: 0x20
 
-globals:
-   - id: scn_off_delay
-     type: float
-     restore_value: no
-     initial_value: '0.0'
 
 font:
   - file: "gfonts://Roboto"
