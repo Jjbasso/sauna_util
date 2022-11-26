@@ -26,8 +26,8 @@ sensor:
         below: 50.0
         then:
           - binary_sensor.template.publish: 
-            id: proximity
-            state: ON
+              id: proximity
+              state: ON
 
 binary_sensor:
   - platform: template
