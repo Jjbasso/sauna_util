@@ -13,4 +13,27 @@ i2c:
   id: bus_a
 
 # Enable logging
-logger:      
+logger:
+
+sensor:
+   # Setup fan sensors
+  - platform: custom
+    lambda: |-
+      auto sauna_util_fan_controller = new emc2101_sensors();
+      App.register_component(sauna_util_fan_controller);
+      return {sauna_util_fan_controller->internal_temperature_sensor, sauna_util_fan_controller->external_temperature_sensor, sauna_util_fan_controller->rpm_sensor};
+
+    sensors:
+    - name: "Sauna Utility Processor Temperature"
+      unit_of_measurement: "°F"
+      device_class: "temperature"
+      state_class: "measurement"
+
+    - name: "Sauna Utility External Temperature"
+      unit_of_measurement: "°F"
+      device_class: "temperature"
+      state_class: "measurement"
+
+    - name: "Sauna Utility Fan RPM"
+      unit_of_measurement: "rpm"
+      state_class: "measurement"
