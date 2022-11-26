@@ -53,7 +53,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_1
     - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON
 
   - platform: gpio
@@ -70,7 +70,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_2
     - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON
       
   - platform: gpio
@@ -87,7 +87,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_3
     - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON
 
 switch:

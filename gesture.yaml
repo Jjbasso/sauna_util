@@ -48,7 +48,7 @@ binary_sensor:
     direction: UP
     on_state:
       - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
@@ -59,7 +59,7 @@ binary_sensor:
     direction: DOWN
     on_state:
       - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
@@ -70,7 +70,7 @@ binary_sensor:
     direction: RIGHT
     on_state:
       - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON 
       - text_sensor.template.publish: 
           id: direction_status
@@ -81,7 +81,7 @@ binary_sensor:
     direction: LEFT
     on_state:
       - binary_sensor.template.publish: 
-          id: proximity
+          id: $gesture_prox_obj
           state: ON 
       - text_sensor.template.publish: 
           id: direction_status
