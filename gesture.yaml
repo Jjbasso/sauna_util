@@ -25,18 +25,18 @@ sensor:
       - below: 2.0
         then:
           - binary_sensor.template.publish: 
-              id: $gesture_prox_obj
+              id: $gesture_prox_id
               state: OFF
       - above: 2.0
         below: 50.0
         then:
           - binary_sensor.template.publish: 
-              id: $gesture_prox_obj
+              id: $gesture_prox_id
               state: ON
       - above: 50.0
         then:
           - binary_sensor.template.publish: 
-              id: $gesture_prox_obj
+              id: $gesture_prox_id
               state: OFF
 
 binary_sensor:
@@ -48,7 +48,7 @@ binary_sensor:
     direction: UP
     on_state:
       - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
@@ -59,7 +59,7 @@ binary_sensor:
     direction: DOWN
     on_state:
       - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
@@ -70,7 +70,7 @@ binary_sensor:
     direction: RIGHT
     on_state:
       - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON 
       - text_sensor.template.publish: 
           id: direction_status
@@ -81,7 +81,7 @@ binary_sensor:
     direction: LEFT
     on_state:
       - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON 
       - text_sensor.template.publish: 
           id: direction_status

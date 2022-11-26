@@ -10,7 +10,7 @@ display:
     model: "SH1106 128x64"
     rotation: 180
     address: 0x3C
-    id: oled_display
+    id: $display_id
     lambda: |-
       if (id(element_1).state) {
         it.print(0, 0, id(my_font), "Element1: ON");
@@ -53,7 +53,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_1
     - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON
 
   - platform: gpio
@@ -70,7 +70,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_2
     - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON
       
   - platform: gpio
@@ -87,7 +87,7 @@ binary_sensor:
     on_press:
     - switch.toggle: element_3
     - binary_sensor.template.publish: 
-          id: $gesture_prox_obj
+          id: $gesture_prox_id
           state: ON
 
 switch:
