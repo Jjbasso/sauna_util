@@ -28,7 +28,6 @@ display:
         it.print(0, 40, id(my_font), "Element3: OFF");
       }
 
-
 mcp23008:
   - id: 'mcp23008_hub'
     address: 0x20
@@ -39,14 +38,10 @@ globals:
      restore_value: no
      initial_value: '0.0'
 
-
-
 font:
   - file: "gfonts://Roboto"
     id: my_font
     size: 15
-
-
 
 binary_sensor:
 # display button binary inputs

@@ -1,31 +1,31 @@
 esphome:
-  name: $name
+  name: $config_name
 
 
 # Enable logging
 logger:
 
 esp32:
-  board: $board
+  board: $config_board
   framework:
     type: arduino
 
 # Enable Home Assistant API
 api: 
-  password: $api_pwd
+  password: $config_api_pwd
   encryption: 
-    key: $api_enc_key
+    key: $config_api_enc_key
 
 ota:
   safe_mode: false
-  password: $ota_pwd
+  password: $config_ota_pwd
 
 wifi:
-  ssid: $wifi_ssid
-  password: $wifi_pwd
+  ssid: $config_wifi_ssid
+  password: $config_wifi_pwd
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: $ap_fallback_ssid
-    password: $ap_fallback_pwd
+    ssid: $config_ap_fallback_ssid
+    password: $config_ap_fallback_pwd
 captive_portal:
