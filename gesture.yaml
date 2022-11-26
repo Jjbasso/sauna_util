@@ -28,15 +28,14 @@ sensor:
           - binary_sensor.template.publish: 
               id: proximity
               state: ON
-        else:      
-          - binary_sensor.template.publish: 
-              id: proximity
-              state: OFF
+ 
+
 binary_sensor:
   - platform: template
     name: "Sauna Utility Gesture Proximity"
     id: proximity
-
+    filters:
+      - delayed_off: 9s
 
   - platform: apds9960
     id: gesture_up
