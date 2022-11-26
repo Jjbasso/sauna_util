@@ -1,0 +1,146 @@
+esphome:
+  on_boot:
+    priority: -100
+    then:
+      - lambda: id(oled_display).turn_off();
+
+
+display:
+  - platform: ssd1306_i2c
+    model: "SH1106 128x64"
+    rotation: 180
+    address: 0x3C
+    id: oled_display
+    lambda: |-
+      if (id(element_1).state) {
+        it.print(0, 0, id(my_font), "Element1: ON");
+      } else {
+        it.print(0, 0, id(my_font), "Element1: OFF");
+      }
+      if (id(element_2).state) {
+        it.print(0, 20, id(my_font), "Element2: ON");
+      } else {
+        it.print(0, 20, id(my_font), "Element2: OFF");
+      }
+      if (id(element_3).state) {
+        it.print(0, 40, id(my_font), "Element3: ON");
+      } else {
+        it.print(0, 40, id(my_font), "Element3: OFF");
+      }
+
+
+mcp23008:
+  - id: 'mcp23008_hub'
+    address: 0x20
+
+globals:
+   - id: scn_off_delay
+     type: float
+     restore_value: no
+     initial_value: '0.0'
+
+
+
+font:
+  - file: "gfonts://Roboto"
+    id: my_font
+    size: 15
+
+
+
+binary_sensor:
+# display button binary inputs
+  - platform: gpio
+    name: "Sauna Heating Element 1 Button"
+    icon: "mdi:radiobox-marked"
+    id: button_0
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 0
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+    - switch.toggle: element_1
+
+  - platform: gpio
+    name: "Sauna Heating Element 2 Button"
+    icon: "mdi:radiobox-marked"
+    id: button_1
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 1
+      mode:
+        input: true
+        pullup: true
+      inverted: true 
+    on_press:
+    - switch.toggle: element_2
+      
+  - platform: gpio
+    name: "Sauna Heating Element 3 Button"
+    icon: "mdi:radiobox-marked"
+    id: button_2
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 2
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    on_press:
+    - switch.toggle: element_3
+
+switch:
+  - platform: gpio
+    restore_mode: ALWAYS_OFF
+    name: "Sauna Heating Element 1 Green Led"
+    icon: "mdi:alarm-light-outline"
+    id: green_led
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 4
+      mode:
+        output: true
+      inverted: false    
+  
+  - platform: gpio
+    restore_mode: ALWAYS_OFF
+    name: "Sauna Heating Element 2 Yellow Led"
+    icon: "mdi:alarm-light-outline"
+    id: yellow_led
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 5
+      mode:
+        output: true
+      inverted: false
+      
+  - platform: gpio
+    restore_mode: ALWAYS_OFF
+    name: "Sauna Heating Element 3 Red Led"
+    icon: "mdi:alarm-light-outline"
+    id: red_led
+    pin:
+      mcp23xxx: mcp23008_hub
+      number: 6
+      mode:
+        output: true
+      inverted: false   
+
+  - platform: gpio
+    restore_mode: ALWAYS_OFF
+    name: "Sauna Buzzer"
+    icon: "mdi:bell-alert"
+    id: buzzer
+    pin: 
+      mcp23xxx: mcp23008_hub
+      number: 7
+      mode:
+        output: true
+      inverted: false   
+    on_turn_on:
+    - delay: 500ms
+    - switch.turn_off: buzzer    
+ 

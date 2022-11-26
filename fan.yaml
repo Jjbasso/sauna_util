@@ -37,3 +37,18 @@ sensor:
     - name: "Sauna Utility Fan RPM"
       unit_of_measurement: "rpm"
       state_class: "measurement"
+
+output:
+  - platform: custom
+    type: float
+    lambda: |-
+      auto sauna_utility_fan_speed = new emc2101_fan_speed();
+      App.register_component(sauna_utility_fan_speed);
+      return {sauna_utility_fan_speed};    
+    
+    outputs:
+      id: sauna_utility_fan_speed
+fan:
+  - platform: speed
+    output: sauna_utility_fan_speed
+    name: "Sauna Utility Fan Speed"
