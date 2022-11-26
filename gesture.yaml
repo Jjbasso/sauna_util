@@ -23,7 +23,7 @@ number:
     max_value: 100
     step: 1
     on_value_range:
-      above: 9
+      above: 3
       then:
         - binary_sensor.template.publish: 
           id: proximity
