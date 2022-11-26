@@ -39,7 +39,6 @@ font:
     size: 15
 
 binary_sensor:
-# display button binary inputs
   - platform: gpio
     name: "Sauna Heating Element 1 Button"
     icon: "mdi:radiobox-marked"
@@ -53,6 +52,9 @@ binary_sensor:
       inverted: true
     on_press:
     - switch.toggle: element_1
+    - binary_sensor.template.publish: 
+          id: proximity
+          state: ON
 
   - platform: gpio
     name: "Sauna Heating Element 2 Button"
@@ -67,6 +69,9 @@ binary_sensor:
       inverted: true 
     on_press:
     - switch.toggle: element_2
+    - binary_sensor.template.publish: 
+          id: proximity
+          state: ON
       
   - platform: gpio
     name: "Sauna Heating Element 3 Button"
@@ -81,6 +86,9 @@ binary_sensor:
       inverted: true
     on_press:
     - switch.toggle: element_3
+    - binary_sensor.template.publish: 
+          id: proximity
+          state: ON
 
 switch:
   - platform: gpio

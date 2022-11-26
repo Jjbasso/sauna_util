@@ -40,11 +40,7 @@ sensor:
               state: OFF
 
 binary_sensor:
-  - platform: template
-    name: "Sauna Utility Gesture Proximity"
-    id: proximity
-    filters:
-      - delayed_off: $gesture_prox_off_delay
+  
    
 
   - platform: apds9960
