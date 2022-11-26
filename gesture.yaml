@@ -22,13 +22,22 @@ sensor:
     id: prox
     type: PROXIMITY    
     on_value_range:
+      - below: 2.0
+        then:
+          - binary_sensor.template.publish: 
+              id: proximity
+              state: OFF
       - above: 2.0
         below: 50.0
         then:
           - binary_sensor.template.publish: 
               id: proximity
               state: ON
- 
+      - above: 50.0
+        then:
+          - binary_sensor.template.publish: 
+              id: proximity
+              state: OFF
 
 binary_sensor:
   - platform: template
