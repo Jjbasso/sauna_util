@@ -6,6 +6,7 @@ apds9960:
   gesture_gain: $gesture_gain
   gesture_led_drive: $gesture_led_drive
   gesture_wait_time: $gesture_wait_time
+  
 
 
 
@@ -22,18 +23,18 @@ sensor:
     id: prox
     type: PROXIMITY    
     on_value_range:
-      - below: 2.0
+      - below: $gesture_prox_min
         then:
           - binary_sensor.template.publish: 
               id: $gesture_prox_id
               state: OFF
-      - above: 2.0
-        below: 50.0
+      - above: $gesture_prox_min
+        below: $gesture_prox_max
         then:
           - binary_sensor.template.publish: 
               id: $gesture_prox_id
               state: ON
-      - above: 50.0
+      - above: $gesture_prox_max
         then:
           - binary_sensor.template.publish: 
               id: $gesture_prox_id
