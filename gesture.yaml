@@ -1,11 +1,11 @@
 apds9960:
   address: 0x39
-  update_interval: 1s
-  proximity_gain: 8x
-  ambient_light_gain: 4x
-  gesture_gain: 8x
-  gesture_led_drive: 12.5mA
-  gesture_wait_time: 2.8ms
+  update_interval: $gesture_update_interval
+  proximity_gain: $gesture_proximity_gain
+  ambient_light_gain: $gesture_ambient_light_gain
+  gesture_gain: $gesture_gain
+  gesture_led_drive: $gesture_led_drive
+  gesture_wait_time: $gesture_wait_time
 
 
 
