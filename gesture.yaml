@@ -8,8 +8,6 @@ apds9960:
   gesture_wait_time: $gesture_wait_time
   
 
-
-
 text_sensor: 
   - platform : template 
     name: "Sauna Utility Gesture Status"
