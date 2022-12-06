@@ -3,6 +3,7 @@ apds9960:
   update_interval: $gesture_update_interval
   proximity_gain: $gesture_proximity_gain
   ambient_light_gain: $gesture_ambient_light_gain
+  led_drive: $gesture_pri_led_drive 
   gesture_gain: $gesture_gain
   gesture_led_drive: $gesture_led_drive
   gesture_wait_time: $gesture_wait_time
