@@ -25,7 +25,7 @@ sensor:
           alpha: 0.1
           send_every: 1
     on_value:
-    if:
+      if:
       condition:
         sensor.in_range:
           id: prox
