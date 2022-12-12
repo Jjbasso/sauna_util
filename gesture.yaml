@@ -26,16 +26,16 @@ sensor:
           send_every: 1
     on_value:
       if:
-      condition:
-        sensor.in_range:
-          id: prox
-          above: $gesture_prox_min
-          below: $gesture_prox_max
-      then:
-      - number.to_min: scn_off_delay
-      - binary_sensor.template.publish: 
-        id: sauna_utility_display
-        state: ON
+        condition:
+          sensor.in_range:
+            id: prox
+            above: $gesture_prox_min
+            below: $gesture_prox_max
+        then:
+        - number.to_min: scn_off_delay
+        - binary_sensor.template.publish: 
+          id: sauna_utility_display
+          state: ON
 
 binary_sensor:
   
