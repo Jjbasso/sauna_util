@@ -3,9 +3,9 @@ globals:
    - id: scn_off_delay
      type: int
      restore_value: no
-     min_value: 0
-     max_value: 120
-     initial_value: 0
+     min_value: '0'
+     max_value: '120'
+     initial_value: '0'
      on_value_range:
        above: $gesture_prox_off_delay
        then:
