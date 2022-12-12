@@ -54,6 +54,9 @@ binary_sensor:
       - binary_sensor.template.publish: 
           id: $gesture_prox_id
           state: ON
+      - binary_sensor.template.publish: 
+          id: $gesture_prox_id
+          state: OFF
       - text_sensor.template.publish: 
           id: direction_status
           state: "UP"
@@ -65,6 +68,9 @@ binary_sensor:
       - binary_sensor.template.publish: 
           id: $gesture_prox_id
           state: ON
+      - binary_sensor.template.publish: 
+          id: $gesture_prox_id
+          state: OFF
       - text_sensor.template.publish: 
           id: direction_status
           state: "DOWN"
@@ -75,7 +81,10 @@ binary_sensor:
     on_state:
       - binary_sensor.template.publish: 
           id: $gesture_prox_id
-          state: ON 
+          state: ON
+      - binary_sensor.template.publish: 
+          id: $gesture_prox_id
+          state: OFF 
       - text_sensor.template.publish: 
           id: direction_status
           state: "RIGHT"
@@ -86,7 +95,10 @@ binary_sensor:
     on_state:
       - binary_sensor.template.publish: 
           id: $gesture_prox_id
-          state: ON 
+          state: ON
+      - binary_sensor.template.publish: 
+          id: $gesture_prox_id
+          state: OFF
       - text_sensor.template.publish: 
           id: direction_status
           state: "LEFT"
