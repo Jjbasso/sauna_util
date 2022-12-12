@@ -1,6 +1,7 @@
 
 globals:
    - id: scn_off_delay
+     type: float
      restore_value: no
      min_value: '0'
      max_value: '120'
