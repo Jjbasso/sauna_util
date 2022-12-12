@@ -5,7 +5,7 @@ number:
     min_value: 0
     max_value: 120
     initial_value: '0'
-    STEP: 1
+    step: 1
     on_value_range:
       above: $gesture_prox_off_delay
       then:
