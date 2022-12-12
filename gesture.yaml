@@ -21,6 +21,10 @@ sensor:
     name: "Sauna Utility Proximity Channel"
     id: prox
     type: PROXIMITY    
+    filters:
+      - exponential_moving_average:
+          alpha: 0.1
+          send_every: 1
     on_value_range:
       - below: $gesture_prox_min
         then:
