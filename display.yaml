@@ -10,8 +10,8 @@ number:
       above: $gesture_prox_off_delay
       then:
         - binary_sensor.template.publish: 
-          id: sauna_utility_display
-          state: OFF
+            id: sauna_utility_display
+            state: OFF
 
 time:
   - platform: sntp
