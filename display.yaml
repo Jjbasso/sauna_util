@@ -2,6 +2,8 @@
 number:
   - platform: template
     name: "Screen Off Delay"
+    id: scn_off_delay
+    optimistic: true
     min_value: 0
     max_value: 120
     initial_value: '0'
