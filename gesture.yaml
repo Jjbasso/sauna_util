@@ -25,23 +25,17 @@ sensor:
       - exponential_moving_average:
           alpha: 0.1
           send_every: 1
-    on_value_range:
-      - below: $gesture_prox_min
-        then:
-          - binary_sensor.template.publish: 
-              id: $gesture_prox_id
-              state: OFF
-      - above: $gesture_prox_min
-        below: $gesture_prox_max
-        then:
-          - binary_sensor.template.publish: 
-              id: $gesture_prox_id
-              state: ON
-      - above: $gesture_prox_max
-        then:
-          - binary_sensor.template.publish: 
-              id: $gesture_prox_id
-              state: OFF
+    on_value:
+    if:
+      condition:
+        sensor.in_range:
+          id: prox
+          above: $gesture_prox_min
+          below: $gesture_prox_max
+      then:
+      - binary_sensor.template.publish: 
+        id: $gesture_prox_id
+        state: ON
 
 binary_sensor:
   
