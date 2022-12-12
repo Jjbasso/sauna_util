@@ -34,8 +34,8 @@ sensor:
         then:
         - number.to_min: scn_off_delay
         - binary_sensor.template.publish: 
-          id: sauna_utility_display
-          state: ON
+            id: sauna_utility_display
+            state: ON
 
 binary_sensor:
   
