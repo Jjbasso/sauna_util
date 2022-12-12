@@ -1,5 +1,3 @@
-esphome:
-  
 display:
   - platform: ssd1306_i2c
     model: "SH1106 128x64"
