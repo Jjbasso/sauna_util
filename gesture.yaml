@@ -21,11 +21,8 @@ sensor:
     id: prox
     type: PROXIMITY    
     filters:
-      #- exponential_moving_average:
-       #   alpha: 0.1
-        #  send_every: 1
-      - median:
-        window_size: 3
+      - exponential_moving_average:
+        alpha: 0.9
         send_every: 1
     on_value:
       if:
