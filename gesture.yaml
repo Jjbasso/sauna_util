@@ -1,0 +1,84 @@
+apds9960:
+  address: 0x39
+  update_interval: $gesture_update_interval
+  proximity_gain: $gesture_proximity_gain
+  ambient_light_gain: $gesture_ambient_light_gain
+  led_drive: $gesture_pri_led_drive 
+  gesture_gain: $gesture_gain
+  gesture_led_drive: $gesture_led_drive
+  gesture_wait_time: $gesture_wait_time
+
+text_sensor: 
+  - platform : template 
+    name: "Sauna Utility Gesture Status"
+    icon: mdi:gesture
+    id : direction_status
+
+sensor:
+  - platform: apds9960
+    name: "Sauna Utility Proximity Channel"
+    id: prox
+    type: PROXIMITY    
+    filters:
+      - exponential_moving_average:
+        alpha: 0.9
+        send_every: 1
+    on_value:
+      if:
+        condition:
+          sensor.in_range:
+            id: prox
+            above: $gesture_prox_min
+            below: $gesture_prox_max
+        then:
+        - binary_sensor.template.publish: 
+            id: sauna_utility_display
+            state: ON
+  
+
+
+binary_sensor:
+  - platform: apds9960
+    id: gesture_up
+    direction: UP
+    on_state:
+      - binary_sensor.template.publish: 
+          id: sauna_utility_display
+          state: ON
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "UP"
+
+  - platform: apds9960
+    id: gesture_down
+    direction: DOWN
+    on_state:
+      - binary_sensor.template.publish: 
+          id: sauna_utility_display
+          state: ON
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "DOWN"
+    
+  - platform: apds9960
+    id: gesture_right
+    direction: RIGHT
+    on_state:
+      
+      - binary_sensor.template.publish: 
+          id: sauna_utility_display
+          state: ON
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "RIGHT"
+    
+  - platform: apds9960
+    id: gesture_left
+    direction: LEFT
+    on_state:
+      - binary_sensor.template.publish: 
+          id: sauna_utility_display
+          state: ON
+      - text_sensor.template.publish: 
+          id: direction_status
+          state: "LEFT"
