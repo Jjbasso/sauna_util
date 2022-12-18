@@ -35,6 +35,12 @@ sensor:
         - binary_sensor.template.publish: 
             id: sauna_utility_display
             state: ON
+  
+  - platform: apds9960
+    name: "Sauna Utility Clear Channel"
+    id: clear
+    type: CLEAR  
+    
 
 binary_sensor:
   - platform: apds9960
