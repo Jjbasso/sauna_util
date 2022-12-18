@@ -47,7 +47,7 @@ binary_sensor:
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
-          state: "UP"
+          state: "UP1"
 
   - platform: apds9960
     id: gesture_down
@@ -58,7 +58,7 @@ binary_sensor:
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
-          state: "DOWN"
+          state: "DOWN1"
     
   - platform: apds9960
     id: gesture_right
@@ -70,7 +70,7 @@ binary_sensor:
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
-          state: "RIGHT"
+          state: "RIGHT1"
     
   - platform: apds9960
     id: gesture_left
@@ -81,4 +81,4 @@ binary_sensor:
           state: ON
       - text_sensor.template.publish: 
           id: direction_status
-          state: "LEFT"
+          state: "LEFT1"
