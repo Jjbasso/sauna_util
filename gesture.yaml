@@ -17,6 +17,11 @@ text_sensor:
 
 sensor:
   - platform: apds9960
+    name: "Sauna Utility Clear Channel"
+    id: clear
+    type: CLEAR  
+    
+  - platform: apds9960
     name: "Sauna Utility Proximity Channel"
     id: prox
     type: PROXIMITY    
@@ -36,11 +41,7 @@ sensor:
             id: sauna_utility_display
             state: ON
   
-  - platform: apds9960
-    name: "Sauna Utility Clear Channel"
-    id: clear
-    type: CLEAR  
-    
+
 
 binary_sensor:
   - platform: apds9960
