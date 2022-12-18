@@ -19,7 +19,7 @@ sensor:
   - platform: apds9960
     name: "Sauna Utility Clear Channel"
     id: clear
-    type: CLEAR1  
+    type: CLEAR  
     
   - platform: apds9960
     name: "Sauna Utility Proximity Channel"
@@ -27,7 +27,7 @@ sensor:
     type: PROXIMITY    
     filters:
       - exponential_moving_average:
-        alpha: 0.9
+        alpha1: 0.9
         send_every: 1
     on_value:
       if:
