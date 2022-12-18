@@ -24,8 +24,7 @@ time:
           - number.increment: scn_off_delay
 
 
-displ
-.ay:
+display:
   - platform: ssd1306_i2c
     model: "SH1106 128x64"
     rotation: 180
