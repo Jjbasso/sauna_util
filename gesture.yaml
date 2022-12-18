@@ -27,7 +27,7 @@ sensor:
     type: PROXIMITY    
     filters:
       - exponential_moving_average:
-        alpha1: 0.9
+        alpha: 0.9
         send_every: 1
     on_value:
       if:
