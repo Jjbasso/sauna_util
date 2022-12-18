@@ -24,7 +24,8 @@ time:
           - number.increment: scn_off_delay
 
 
-display:
+displ
+.ay:
   - platform: ssd1306_i2c
     model: "SH1106 128x64"
     rotation: 180
@@ -59,6 +60,19 @@ font:
 
 
 binary_sensor:
+  - platform: template
+    name: "Sauna Utility Display"
+    id: sauna_utility_display
+    on_state:
+       if:
+            condition:
+              - binary_sensor.is_on: sauna_utility_display
+            then:
+              - lambda: id($display_id).turn_on();
+              - number.to_min: scn_off_delay
+            else:
+              - lambda: id($display_id).turn_off(); 
+
   - platform: gpio
     name: "Sauna Heating Element 1 Button"
     icon: "mdi:radiobox-marked"
@@ -110,18 +124,6 @@ binary_sensor:
           id: sauna_utility_display
           state: ON
  
-  - platform: template
-    name: "Sauna Utility Display"
-    id: sauna_utility_display
-    on_state:
-       if:
-            condition:
-              - binary_sensor.is_on: sauna_utility_display
-            then:
-              - lambda: id($display_id).turn_on();
-              - number.to_min: scn_off_delay
-            else:
-              - lambda: id($display_id).turn_off(); 
 
 
 

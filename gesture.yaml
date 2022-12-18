@@ -21,9 +21,12 @@ sensor:
     id: prox
     type: PROXIMITY    
     filters:
-      - exponential_moving_average:
-          alpha: 0.1
-          send_every: 1
+      #- exponential_moving_average:
+       #   alpha: 0.1
+        #  send_every: 1
+      - median:
+        window_size: 7
+        send_every: 1
     on_value:
       if:
         condition:
@@ -32,7 +35,6 @@ sensor:
             above: $gesture_prox_min
             below: $gesture_prox_max
         then:
-        - number.to_min: scn_off_delay
         - binary_sensor.template.publish: 
             id: sauna_utility_display
             state: ON
@@ -45,7 +47,6 @@ binary_sensor:
     id: gesture_up
     direction: UP
     on_state:
-      - number.to_min: scn_off_delay
       - binary_sensor.template.publish: 
           id: sauna_utility_display
           state: ON
@@ -57,7 +58,6 @@ binary_sensor:
     id: gesture_down
     direction: DOWN
     on_state:
-      - number.to_min: scn_off_delay
       - binary_sensor.template.publish: 
           id: sauna_utility_display
           state: ON
@@ -81,7 +81,6 @@ binary_sensor:
     id: gesture_left
     direction: LEFT
     on_state:
-      - number.to_min: scn_off_delay
       - binary_sensor.template.publish: 
           id: sauna_utility_display
           state: ON
