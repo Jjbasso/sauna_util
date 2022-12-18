@@ -19,7 +19,7 @@ sensor:
   - platform: apds9960
     name: "Sauna Utility Clear Channel"
     id: clear
-    type: CLEAR  
+    type: CLEAR1  
     
   - platform: apds9960
     name: "Sauna Utility Proximity Channel"
