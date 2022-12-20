@@ -125,7 +125,6 @@ binary_sensor:
  
 output:
   - platform: slow_pwm
-    name: "Sauna Buzzer"
     pin: 
       mcp23xxx: mcp23008_hub
       number: 7
