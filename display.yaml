@@ -132,7 +132,7 @@ output:
         output: true
       inverted: false   
     id: buzzer
-    period: 2
+    period: 2s
 
 
 
