@@ -25,6 +25,13 @@ sensor:
       unit_of_measurement: "°F"
       device_class: "temperature"
       state_class: "measurement"
+      on_value_range:
+      - above: $display_alarm_threshold
+        then:
+          - switch.turn_on: buzzer
+      - below: $display_alarm_threshold
+        then:
+          - switch.turn_off: buzzer
 
     - name: "Sauna Utility Fan RPM"
       unit_of_measurement: "rpm"
@@ -40,6 +47,7 @@ output:
     
     outputs:
       id: sauna_utility_fan_speed
+
 fan:
   - platform: speed
     output: sauna_utility_fan_speed

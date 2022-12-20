@@ -123,7 +123,16 @@ binary_sensor:
           id: sauna_utility_display
           state: ON
  
-
+output:
+  - platform: slow_pwm
+    pin: 
+      mcp23xxx: mcp23008_hub
+      number: 7
+      mode:
+        output: true
+      inverted: false   
+    id: buzzer
+    period: 2
 
 
 
@@ -164,18 +173,16 @@ switch:
         output: true
       inverted: false   
 
-  - platform: gpio
-    restore_mode: ALWAYS_OFF
-    name: "Sauna Buzzer"
-    icon: "mdi:bell-alert"
-    id: buzzer
-    pin: 
-      mcp23xxx: mcp23008_hub
-      number: 7
-      mode:
-        output: true
-      inverted: false   
-    on_turn_on:
-    - delay: 500ms
-    - switch.turn_off: buzzer    
+ # - platform: gpio
+ #   restore_mode: ALWAYS_OFF
+ ##   name: "Sauna Buzzer"
+ #   icon: "mdi:bell-alert"
+ #   id: buzzer
+ #   pin: 
+ #     mcp23xxx: mcp23008_hub
+ #     number: 7
+ #     mode:
+ #       output: true
+ #     inverted: false   
+ 
  
