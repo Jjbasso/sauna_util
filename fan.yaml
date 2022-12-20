@@ -28,10 +28,10 @@ sensor:
       on_value_range:
       - above: $display_alarm_threshold
         then:
-          - switch.turn_on: buzzer
+          - output.turn_on: buzzer
       - below: $display_alarm_threshold
         then:
-          - switch.turn_off: buzzer
+          - output.turn_off: buzzer
 
     - name: "Sauna Utility Fan RPM"
       unit_of_measurement: "rpm"
