@@ -1,29 +1,13 @@
-substitutions:
-  device_name: mmwave
-  ## FIXME: To be removed later. Would cause a breaking change.
-  uart_tx_pin: GPIO19
-  uart_rx_pin: GPIO18
-  ##
-  gpio_pin: GPIO23
-  header_file: leapmmw_sensor.h
-
-esphome:
-  name: ${device_name}
-  includes:
-    - ${header_file}
-
 logger:
   logs:
     sensor: INFO # reduced logging to minimize web_server target overload..
     script: ERROR
 
-## FIXME: To be removed later. Would cause a breaking change
 uart:
   id: uart_bus
-  tx_pin: ${uart_tx_pin}
-  rx_pin: ${uart_rx_pin}
+  tx_pin: ${leapmmw_sensor_uart_tx_pin}
+  rx_pin: ${ leapmmw_sensor_uart_rx_pin}
   baud_rate: 115200
-##
 
 binary_sensor:
   - platform: gpio
@@ -31,7 +15,7 @@ binary_sensor:
     id: mmwave_presence_detection
     device_class: motion
     pin:
-      number: ${gpio_pin}
+      number: ${leapmmw_sensor_gpio_pin}
       mode: INPUT_PULLDOWN
     on_state:
       - if:
@@ -381,18 +365,3 @@ script:
       - delay: 1s
       - switch.turn_on: mmwave_sensor
       - delay: 6s # the sum of mmwave_sensor delays
-      
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
