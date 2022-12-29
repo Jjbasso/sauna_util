@@ -6,7 +6,7 @@ logger:
 uart:
   id: uart_bus
   tx_pin: ${leapmmw_sensor_uart_tx_pin}
-  rx_pin: ${ leapmmw_sensor_uart_rx_pin}
+  rx_pin: ${leapmmw_sensor_uart_rx_pin}
   baud_rate: 115200
 
 binary_sensor:
