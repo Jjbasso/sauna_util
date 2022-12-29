@@ -265,7 +265,7 @@ number:
 
 button:
   - platform: restart
-    name: Restart_ESP_${device_name}
+    name: Restart_ESP_${config_name}
     entity_category: diagnostic
     on_press:
       - uart.write:
@@ -273,7 +273,7 @@ button:
           data: "resetSystem 0"
 
   - platform: template
-    name: factory_reset_mmwMCU_${device_name}
+    name: factory_reset_mmwMCU_${config_name}
     id: factory_reset_mmwMCU
     entity_category: diagnostic
     on_press:
