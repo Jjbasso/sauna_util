@@ -56,9 +56,7 @@ binary_sensor:
       - binary_sensor.template.publish: 
           id: sauna_utility_display
           state: ON
-      - text_sensor.template.publish: 
-          id: direction_status
-          state: "DOWN"
+      - +- 
     
   - platform: apds9960
     id: gesture_right
