@@ -60,12 +60,12 @@ sensor:
   - platform: template
     name: "Sauna spa target 1 SNR"
     id: target_1_SNR # do not change
-    internal: flase
+    internal: false
 
   - platform: template
     name: "Sauna spa target 2 SNR"
     id: target_2_SNR # do not change
-    internal: flase
+    internal: false
     
   - platform: template
     name: "Sauna spa target 3 SNR"
