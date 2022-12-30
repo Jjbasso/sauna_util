@@ -8,7 +8,6 @@ logger:
   logs:
     sensor: INFO # reduced logging to minimize web_server target overload..
     script: ERROR
-    24 AWG Copper Solid Wire
 
 uart:
   id: uart_bus
