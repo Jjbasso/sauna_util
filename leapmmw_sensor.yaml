@@ -1,7 +1,12 @@
 
-includes:
+esphome:
+  libraries:
+    - Wire
+    - SPI
+    - "Adafruit BusIO"
+    - "Adafruit EMC2101"
+  includes:
     - .esphome/external_components/9484f30d/esphome/components/emc2101/fan_controller.h
-
 
 logger:
   logs:
