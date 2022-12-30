@@ -6,7 +6,6 @@ esphome:
     - "Adafruit EMC2101"
   includes:
     - .esphome/external_components/9484f30d/esphome/components/emc2101/fan_controller.h
-    - .esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
     
 sensor:
    # Setup fan sensors
