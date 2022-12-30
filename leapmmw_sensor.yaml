@@ -38,7 +38,7 @@ binary_sensor:
     
 sensor:      
   - platform: template
-    name: ""Sauna spa target 1 distance"
+    name: "Sauna spa target 1 distance"
     id: target_1_distance_m # do not change
     internal: false
     
@@ -76,7 +76,7 @@ sensor:
     name: "Sauna spa target 4 SNR"
     id: target_4_SNR # do not change
     internal: false
-    
+
 
   - platform: template
     name: "Sauna spa number targets"
