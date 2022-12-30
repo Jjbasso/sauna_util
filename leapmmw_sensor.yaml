@@ -1,3 +1,7 @@
+
+includes:
+    - .esphome/external_components/9484f30d/esphome/components/emc2101/leapmmw_sensor.h
+
 logger:
   logs:
     sensor: INFO # reduced logging to minimize web_server target overload..
