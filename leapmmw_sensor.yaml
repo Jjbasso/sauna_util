@@ -1,6 +1,6 @@
 
 includes:
-    - .esphome/external_components/9484f30d/esphome/components/emc2101/leapmmw_sensor.h
+    - .esphome/external_components/9484f30d/esphome/components/emc2101/leapmmw_sensor/leapmmw_sensor.h
 
 logger:
   logs:
