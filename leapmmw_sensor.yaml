@@ -38,47 +38,47 @@ binary_sensor:
     
 sensor:      
   - platform: template
-    name: target_1_distance_m
+    name: ""Sauna spa target 1 distance"
     id: target_1_distance_m # do not change
     internal: true
     
   - platform: template
-    name: target_2_distance_m
+    name: "Sauna spa target 2 distance"
     id: target_2_distance_m # do not change
     internal: true
     
   - platform: template
-    name: target_3_distance_m
+    name: "Sauna spa target 3 distance"
     id: target_3_distance_m # do not change
     internal: true
     
   - platform: template
-    name: target_4_distance_m
+    name: "Sauna spa target 4 distance"
     id: target_4_distance_m # do not change
     internal: true
     
   - platform: template
-    name: target_1_SNR
+    name: "Sauna spa target 1 SNR"
     id: target_1_SNR # do not change
     internal: true
 
   - platform: template
-    name: target_2_SNR
+    name: "Sauna spa target 2 SNR"
     id: target_2_SNR # do not change
     internal: true
     
   - platform: template
-    name: target_3_SNR
+    name: "Sauna spa target 3 SNR"
     id: target_3_SNR # do not change
     internal: true
     
   - platform: template
-    name: target_4_SNR
+    name: "Sauna spa target 4 SNR"
     id: target_4_SNR # do not change
     internal: true
 
   - platform: template
-    name: num_targets
+    name: "Sauna spa number targets"
     id: num_targets # do not change
     accuracy_decimals: 0
 
@@ -94,7 +94,7 @@ switch:
     name: use_safe_mode
 
   - platform: template
-    name: show_target_stats
+    name: "Sauna spa show target stats"
     id: show_target_stats
     optimistic: true
     internal: true
@@ -102,7 +102,7 @@ switch:
       - lambda: 'return clearTargets();'
 
   - platform: template
-    name: mmwave_sensor
+    name: "Sauna spa mmwave sensor"
     id: mmwave_sensor # do not change
     entity_category: config
     optimistic: true
@@ -114,7 +114,7 @@ switch:
         - script.execute: turn_off_mmwave_sensor
 
   - platform: template
-    name: led
+    name: "Sauna spa mmwave led"
     id: led  # do not change
     entity_category: config
     optimistic: true
@@ -163,7 +163,7 @@ switch:
 
 number:
   - platform: template
-    name: distance
+    name: "Sauna spa distance"
     id: distance # do not change
     entity_category: config
     min_value: 0.15
@@ -200,7 +200,7 @@ number:
               - script.execute: set_distance 
       
   - platform: template
-    name: latency
+    name: "Sauna spa motion latency"
     id: latency # do not change
     entity_category: config
     min_value: 1
@@ -237,7 +237,7 @@ number:
               - script.execute: set_latency
 
   - platform: template
-    name: sensitivity
+    name: "Sauna spa sensitivity"
     id: sensitivity # do not change
     entity_category: config
     min_value: 0
@@ -273,7 +273,7 @@ number:
 
 button:
   - platform: restart
-    name: Restart_ESP_${config_name}
+    name: "Sauna spa Restart  mmwave" 
     entity_category: diagnostic
     on_press:
       - uart.write:
@@ -281,7 +281,7 @@ button:
           data: "resetSystem 0"
 
   - platform: template
-    name: factory_reset_mmwMCU_${config_name}
+    name: "Sauna spa factory reset mmwave"
     id: factory_reset_mmwMCU
     entity_category: diagnostic
     on_press:
