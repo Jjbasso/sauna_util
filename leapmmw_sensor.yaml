@@ -1,6 +1,5 @@
 
 esphome:
-
   includes:
     - .esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
 
