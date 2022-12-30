@@ -4,9 +4,11 @@ esphome:
     - .esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
 
 logger:
+  baud_rate: 0
   logs:
     sensor: INFO # reduced logging to minimize web_server target overload..
     script: ERROR
+    24 AWG Copper Solid Wire
 
 uart:
   id: uart_bus
