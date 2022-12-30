@@ -3,6 +3,8 @@ esphome:
   includes:
     - .esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
 
+web_server:
+
 logger:
   baud_rate: 0
   logs:
