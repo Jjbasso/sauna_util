@@ -19,7 +19,7 @@ uart:
 
 binary_sensor:
   - platform: gpio
-    name: "Sauna spa presence detection"
+    name: mmwave_presence_detection
     id: mmwave_presence_detection
     device_class: motion
     pin:
@@ -42,81 +42,63 @@ sensor:
     name: target_1_distance_m # do not change
     id: target_1_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
 
   - platform: template
     #name: "Sauna spa target 2 distance"
     name: target_2_distance_m # do not change
     id: target_2_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
 
   - platform: template
     #name: "Sauna spa target 3 distance"
     name: target_3_distance_m # do not change
     id: target_3_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
     
   - platform: template
     #name: "Sauna spa target 4 distance"
     name: target_4_distance_m # do not change
     id: target_4_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+   
     
   - platform: template
     #name: "Sauna spa target 1 SNR"
     name: target_1_SNR # do not change
     id: target_1_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
 
   - platform: template
     #name: "Sauna spa target 2 SNR"
     name: target_2_SNR # do not change
     id: target_2_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
     
   - platform: template
     #name: "Sauna spa target 3 SNR"
     name: target_3_SNR # do not change
     id: target_3_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
    
   - platform: template
     #name: "Sauna spa target 4 SNR"
     name: target_4_SNR # do not change
     id: target_4_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    
 
   - platform: template
     #name: "Sauna spa number targets"
     name: num_targets # do not change
     id: num_targets # do not change
     accuracy_decimals: 0
-    filters:
-    - throttle_average: 5s
-    - heartbeat: 5s
+    
 
   - platform: custom
     lambda: |-
