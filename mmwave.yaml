@@ -1,0 +1,17 @@
+esphome:
+  includes:
+    - .esphome/external_components/9484f30d/esphome/components/mmwave/mmwave.h
+
+web_server:
+
+logger:
+  baud_rate: 0
+  
+
+uart:
+  id: uart_bus
+  tx_pin: ${mmwave_uart_tx_pin}
+  rx_pin: ${mmwave_uart_rx_pin}
+  baud_rate: 115200
+
+  

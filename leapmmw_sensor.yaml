@@ -131,7 +131,8 @@ switch:
     name: use_safe_mode
 
   - platform: template
-    name: "Sauna spa show target stats"
+    #name: "Sauna spa show target stats"
+    name: show_target_stats
     id: show_target_stats
     optimistic: true
     internal: false
@@ -139,7 +140,7 @@ switch:
       - lambda: 'return clearTargets();'
 
   - platform: template
-    name: "Sauna spa mmwave sensor"
+    name: mmwave_sensor # do not change
     id: mmwave_sensor # do not change
     entity_category: config
     optimistic: true
@@ -151,7 +152,8 @@ switch:
         - script.execute: turn_off_mmwave_sensor
 
   - platform: template
-    name: "Sauna spa mmwave led"
+    #name: "Sauna spa mmwave led"
+    name: led  # do not change
     id: led  # do not change
     entity_category: config
     optimistic: true
@@ -200,7 +202,8 @@ switch:
 
 number:
   - platform: template
-    name: "Sauna spa distance"
+    #name: "Sauna spa distance"
+    name: distance # do not change
     id: distance # do not change
     entity_category: config
     min_value: 0.15
@@ -237,7 +240,8 @@ number:
               - script.execute: set_distance 
       
   - platform: template
-    name: "Sauna spa motion latency"
+    #name: "Sauna spa motion latency"
+    name: latency # do not change
     id: latency # do not change
     entity_category: config
     min_value: 1
@@ -274,7 +278,8 @@ number:
               - script.execute: set_latency
 
   - platform: template
-    name: "Sauna spa sensitivity"
+    #name: "Sauna spa sensitivity"
+    name: sensitivity # do not change
     id: sensitivity # do not change
     entity_category: config
     min_value: 0
@@ -310,7 +315,7 @@ number:
 
 button:
   - platform: restart
-    name: "Sauna spa Restart  mmwave" 
+    name: Restart_ESP_${device_name}
     entity_category: diagnostic
     on_press:
       - uart.write:
@@ -318,7 +323,7 @@ button:
           data: "resetSystem 0"
 
   - platform: template
-    name: "Sauna spa factory reset mmwave"
+    name: factory_reset_mmwMCU_${device_name}
     id: factory_reset_mmwMCU
     entity_category: diagnostic
     on_press:
