@@ -41,73 +41,74 @@ sensor:
     name: "Sauna spa target 1 distance"
     id: target_1_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+
+   # filters:
+   # - throttle_average: 10s
+   # - heartbeat: 10s
 
   - platform: template
     name: "Sauna spa target 2 distance"
     id: target_2_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+    #- throttle_average: 10s
+    #- heartbeat: 10s
 
   - platform: template
     name: "Sauna spa target 3 distance"
     id: target_3_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+    #- throttle_average: 10s
+    #- heartbeat: 10s
     
   - platform: template
     name: "Sauna spa target 4 distance"
     id: target_4_distance_m # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+   # filters:
+   # - throttle_average: 10s
+   # - heartbeat: 10s
     
   - platform: template
     name: "Sauna spa target 1 SNR"
     id: target_1_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+   # - throttle_average: 10s
+   # - heartbeat: 10s
 
   - platform: template
     name: "Sauna spa target 2 SNR"
     id: target_2_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+    #- throttle_average: 10s
+    #- heartbeat: 10s
     
   - platform: template
     name: "Sauna spa target 3 SNR"
     id: target_3_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+    #- throttle_average: 10s
+    #- heartbeat: 10s
    
   - platform: template
     name: "Sauna spa target 4 SNR"
     id: target_4_SNR # do not change
     internal: false
-    filters:
-    - throttle_average: 10s
-    - heartbeat: 10s
+    #filters:
+    #- throttle_average: 10s
+    #- heartbeat: 10s
 
   - platform: template
     name: "Sauna spa number targets"
     id: num_targets # do not change
     accuracy_decimals: 0
-    filters:
-    - throttle_average: 5s
-    - heartbeat: 5s
+    #filters:
+    #- throttle_average: 5s
+    #- heartbeat: 5s
 
   - platform: custom
     lambda: |-
@@ -124,7 +125,7 @@ switch:
     name: "Sauna spa show target stats"
     id: show_target_stats
     optimistic: true
-    internal: true
+    internal: false
     on_turn_off:
       - lambda: 'return clearTargets();'
 
