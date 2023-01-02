@@ -1,13 +1,13 @@
 
 number:
   - platform: template
-    name: "Screen Off Delay"
     id: scn_off_delay
     optimistic: true
     min_value: 0
     max_value: 120
     initial_value: '0'
     step: 1
+
     on_value_range:
       above: $gesture_prox_off_delay
       then:
@@ -171,18 +171,4 @@ switch:
       number: 6
       mode:
         output: true
-      inverted: false   
-
- # - platform: gpio
- #   restore_mode: ALWAYS_OFF
- ##   name: "Sauna Buzzer"
- #   icon: "mdi:bell-alert"
- #   id: buzzer
- #   pin: 
- #     mcp23xxx: mcp23008_hub
- #     number: 7
- #     mode:
- #       output: true
- #     inverted: false   
- 
- 
+      inverted: false    
