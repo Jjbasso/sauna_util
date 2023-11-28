@@ -13,7 +13,6 @@ esp32:
 
 # Enable Home Assistant API
 api: 
-  # password: $config_api_pwd
   encryption: 
     key: $config_api_enc_key
 
@@ -24,6 +23,11 @@ ota:
 wifi:
   ssid: $config_wifi_ssid
   password: $config_wifi_pwd
+   # Optional manual IP
+  manual_ip:
+    static_ip: 192.168.0.123
+    gateway: 192.168.0.1
+    subnet: 255.255.255.0
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
