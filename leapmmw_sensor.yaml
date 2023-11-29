@@ -1,7 +1,7 @@
 
 esphome:
   includes:
-    - .esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
+    - 5c53de3b_esphome/external_components/9484f30d/esphome/components/leapmmw_sensor/leapmmw_sensor.h
 
 web_server:
 
