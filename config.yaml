@@ -1,6 +1,8 @@
 esphome:
   name: $config_name
 
+network:
+    enable_ipv6: true
 
 # Enable logging
 logger:
