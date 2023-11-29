@@ -1,6 +1,6 @@
 esphome:
   includes:
-   # - .pioenvs/sauna_util/components/mmwave/mmwave.h
+   components/mmwave/mmwave.h
 
 web_server:
 
