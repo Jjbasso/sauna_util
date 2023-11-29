@@ -1,7 +1,7 @@
 
 esphome:
   includes:
-    - .pioenvs/sauna_util/components/leapmmw_sensor/leapmmw_sensor.h
+    - components/leapmmw_sensor/leapmmw_sensor.h
 
 web_server:
 
