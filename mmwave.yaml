@@ -1,6 +1,6 @@
 esphome:
   includes:
-    - .esphome/external_components/9484f30d/esphome/components/mmwave/mmwave.h
+   # - .esphome/external_components/9484f30d/esphome/components/mmwave/mmwave.h
 
 web_server:
 
