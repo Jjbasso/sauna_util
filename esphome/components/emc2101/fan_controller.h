@@ -25,13 +25,13 @@ class emc2101_sensors : public PollingComponent, public Sensor {
     emc2101.setPWMFrequency(7); // sets the clock speed to 25k (see EMC2101 Spect sheet) which is what pc fans need
    
     emc2101.setLUT(0, (32-32)*.5556, 0);
-    emc2101.setLUT(1, (95-32)*.5556, 13);
-    emc2101.setLUT(2, (100-32)*.5556, 14);
-    emc2101.setLUT(3, (105-32)*.5556, 15);
-    emc2101.setLUT(4, (110-32)*.5556, 16);
-    emc2101.setLUT(5, (115-32)*.5556, 17);
-    emc2101.setLUT(6, (120-32)*.5556, 18);
-    emc2101.setLUT(7, (125-32)*.5556, 19);
+    emc2101.setLUT(1, (85-32)*.5556, 13);
+    emc2101.setLUT(2, (90-32)*.5556, 14);
+    emc2101.setLUT(3, (95-32)*.5556, 15);
+    emc2101.setLUT(4, (100-32)*.5556, 16);
+    emc2101.setLUT(5, (105-32)*.5556, 17);
+    emc2101.setLUT(6, (110-32)*.5556, 18);
+    emc2101.setLUT(7, (115-32)*.5556, 19);
   }
 
  
