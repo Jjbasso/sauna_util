@@ -33,6 +33,6 @@ wifi:
     password: $config_ap_fallback_pwd
 
 network:
-  enable_ipv6: true
+#  enable_ipv6: true
 
 captive_portal:
