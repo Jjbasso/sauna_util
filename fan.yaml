@@ -4,8 +4,8 @@ esphome:
     - SPI
     - "Adafruit BusIO"
     - "Adafruit EMC2101"
-  includes:
-    - fan_controller.h
+  #includes:
+   # - fan_controller.h
     
 sensor:
    # Setup fan sensors
