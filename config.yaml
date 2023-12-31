@@ -4,6 +4,7 @@ esphome:
 # Enable logging
 logger:
   level: $config_logger_level
+  baud_rate: $config_logger_baud_rate
 
 esp32:
   board: $config_board
